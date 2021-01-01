@@ -4,13 +4,14 @@
 #include "BubbleSort.h"
 #include "InsertionSort.h"
 #include "MergeSort.h"
+#include "QuickSort.h"
 
 using namespace std;
 
 int main (){
     vector<int> v = {0};
     v = {7,6,5,4,3,2,1};
-    mergeSort(v);
+    quickSort(v);
     for (int i = 0; i < v.size(); i++){
         if (i != 0) cout<< ", ";
         cout << v[i] ;

@@ -1,3 +1,6 @@
+#ifndef MERGE_H
+#define MERGE_H
+
 #include <vector>
 using namespace std;
 
@@ -61,3 +64,5 @@ void mergeSort( vector<T> &v ){
     vector<T> temp( v.size() );
     splitMerge( v, temp, 0, v.size()-1 );
 }
+
+#endif
