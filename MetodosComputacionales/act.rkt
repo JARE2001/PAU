@@ -1,4 +1,6 @@
 #lang racket
+;; A01701350 Jorge Alan Ramirez Elias 
+;; A01701490 Paulina Cardoso Fuentes
 
 ;;(enter! (file "act.rkt"))
 
@@ -56,18 +58,44 @@
     (cond
       [(< n 3) 1]
       [else (+ (fib (- n 1)) (fib (- n 2)))]))
+
 ;;Enlist
 (define (enlist lst)
   (cond
     [(empty? lst) '() ]
     [else (cons (list (car lst)) (enlist (cdr lst)))]))
+
 ;;Add-list
 (define (add-list lst)
   (cond
     [(empty? lst) 0 ]
     [else (+ (car lst) (add-list (cdr lst)))]))
+
 ;;Invert Pairs
 (define (invert-pairs lst)
   (cond
     [(empty? lst) '()]
     [else (cons (append (cdr (car lst)) (list(car(car lst))) )(invert-pairs (cdr lst)) )]))
+
+;;List of Symbols
+(define (list-of-symbols? lst)
+  (cond
+    [(empty? lst) #t]
+    [else (and (not (number? (car lst))) (list-of-symbols? (cdr lst)))]))
+
+;;Swapper
+(define (swapper a b lst)
+  (cond
+    [(empty? lst) '()]
+    [(eq? a (car lst)) (cons b (swapper a b (cdr lst)))]
+    [(eq? b (car lst)) (cons a (swapper a b (cdr lst)))]
+    [else (cons (car lst) (swapper a b (cdr lst)))]))
+
+
+
+
+
+
+
+
+
