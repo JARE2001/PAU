@@ -1,0 +1,16 @@
+  #lang racket
+
+  ;;(enter! (file "act.rkt"))
+
+  ;;Ejercicio 1 Farenheit Celcius
+
+  (define (f-c f)
+    (/ (* 5 (- f 32)) 9))
+
+  ;;Sign
+
+  (define(sign a)
+    (cond
+      [(= a 0) 0]
+      [(< a 0) -1]
+      [else 1]))
