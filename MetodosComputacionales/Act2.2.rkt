@@ -67,21 +67,22 @@
     [else lst]))
 
 
-;(define (deep-reverse lst)
-; (cond
-;    [(empty? lst) '()]
-;    [(list? (car lst))(reverse (cons (reverse (deep-reverse (car lst))) (deep-reverse (cdr lst))))]
-;    [else (append (list (car lst))(deep-reverse (cdr lst))))]))
+;; Inserta el elemento antes del último elemento de la lista
+(define (push-before-last lst x)
+  (cond
+    [(empty? (cdr lst)) (list  x (car lst))]
+    [else (append (list(car lst)) (push-before-last (cdr lst) x))]))
 
 
-;(define (deep-reverse lst)
-;(cond
-;    [(empty? lst) '()]
-;    [(list? (car lst))(cons (reverse (deep-reverse (car lst))) (deep-reverse (cdr lst)))]
-;    [else (append (list (car lst))(deep-reverse (cdr lst)))]))
+;; Insert everywhere
+(define (insert-everywhere x lst)
+  (cond
+    [(empty? lst) (list x)]
+    [(not(list? x)) (cons (append (list x) lst) (insert-everywhere (append (list(car lst)) (list x)) (cdr lst))) ]
+    [else(cons (append x lst) (insert-everywhere (push-before-last x (car lst))  (cdr lst))) ]))
 
 
-
+;; Pack
 (define (pack lst)
   (cond
     [(empty? lst) '()]
@@ -89,11 +90,13 @@
     [else (car lst)]))
 
 
+;; Regresa una lista de todos los elementos consecutivos repetidos
 (define (repeated lst)
   (cond
     [(equal? (car lst) (car (cdr lst))) ]
     []))
 
 
+;; Compress
 (define (compress lst)
   )
