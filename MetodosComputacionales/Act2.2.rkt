@@ -41,13 +41,59 @@
     [(< n 0) (rotate-left (+ n 1) (append (list (last lst)) (minus-last lst)))]))
 
 
+;; Regresa el numero menor entre 2 entradas
+(define (get-minor a b)
+  (cond
+    [(< a b) a]
+    [else b]))
 
-;; Primer factors
-;(define (prime-factors n)
-;  (cond
-;    [(eq? 0 (remainder (/ n i))) (cons i (prime-factors (/ n i)))]
-;    [else ]))
+;; GCD con acumulador
+(define (gcd_acc a b acc)
+  (cond
+    [(and (eq? (remainder a acc) 0) (eq? (remainder b acc) 0)) (* acc (gcd_acc (/ a acc) (/ b acc) 2))]
+    [(eq? acc (get-minor a b)) 1]
+    [else (gcd_acc a b (+ acc 1))]))
 
 
 ;; GCD
-;(define (gcd a b))
+(define (my_gcd a b)
+  (gcd_acc a b 2))
+
+
+;; Deep reverse
+(define (deep-reverse lst)
+  (cond
+    [(list? lst) (reverse (map deep-reverse lst))]
+    [else lst]))
+
+
+;(define (deep-reverse lst)
+; (cond
+;    [(empty? lst) '()]
+;    [(list? (car lst))(reverse (cons (reverse (deep-reverse (car lst))) (deep-reverse (cdr lst))))]
+;    [else (append (list (car lst))(deep-reverse (cdr lst))))]))
+
+
+;(define (deep-reverse lst)
+;(cond
+;    [(empty? lst) '()]
+;    [(list? (car lst))(cons (reverse (deep-reverse (car lst))) (deep-reverse (cdr lst)))]
+;    [else (append (list (car lst))(deep-reverse (cdr lst)))]))
+
+
+
+(define (pack lst)
+  (cond
+    [(empty? lst) '()]
+    [(eq? (car lst) (car (cdr lst))) (append (list (car lst) (pack (cdr lst))) (pack (cdr lst)))]
+    [else (car lst)]))
+
+
+(define (repeated lst)
+  (cond
+    [(equal? (car lst) (car (cdr lst))) ]
+    []))
+
+
+(define (compress lst)
+  )
