@@ -1,0 +1,12 @@
+#lang racket
+(define ( sum a b)
+  (+ a b))
+(define (isTwo x)
+  (cond
+    [(= x 2)true]
+    [else false]))
+
+(define(insert-everywhere x lst)
+  (cond
+    [(empty? lst)(list x)]
+    [else(cons (list x) (insert-everywhere x (cdr lst)) )]))
